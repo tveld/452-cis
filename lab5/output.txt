@@ -1,0 +1,6 @@
+[eos26:~/452-cis/lab5]$ gcc -Wall sample1.c 
+[eos26:~/452-cis/lab5]$ ./a.out 
+value a: 140570065821696	 value b: 140570065825792
+Size: 4096
+[eos26:~/452-cis/lab5]$ 
+

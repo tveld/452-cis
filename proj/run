@@ -1,0 +1,2 @@
+gcc -Wall term.c -lncurses
+./a.out
