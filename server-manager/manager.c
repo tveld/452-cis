@@ -23,6 +23,8 @@ typedef struct server {
 	char* serverName; // server name
 } server;
 
+
+
 int serverCount = 0;
 server servers [MAXSERVERS];  // array of servers
 
@@ -36,7 +38,6 @@ int findServer(char *serverName){
 		if(strcmp(servers[i].serverName, serverName) == 0){
 			return i;
 		}	
- 
 	}
 
 	return -1;
@@ -89,7 +90,7 @@ int abortServer(char* serverName){
 	
 	if(index != -1){
 		kill(servers[index].pid, SIGKILL);
-		servers[index] = 0;
+		servers[index].serverName = "";
 		--serverCount;
 	} else {
 		printf("\nAction aborted. Server name not found.\n\n");
@@ -144,7 +145,7 @@ int main(){
 					char* serverName = malloc(sizeof(char)* strlen(args[3]));
 					strcpy(serverName, args[3]);
 
-					if(minProcs <= 0 || maxProcs <= 0){
+					if(minProcs <= 0 || maxProcs <= 0 || maxProcs < minProcs){
 						printf("\nInvalid Command. Format for command:\n\n\tcreateServer [minimum processes] [maximum processes] [server-name]\n\n");
 						
 					} else {
